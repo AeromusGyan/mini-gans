@@ -1,0 +1,20 @@
+
+
+
+<mat-toolbar>
+    <mat-form-field>
+  <div class="mb-3">
+    
+    <label class="form-label">Email address</label>
+    <input type="email" [(ngModel)]="myData.email" class="form-control" id="email" placeholder="name@example.com">
+  </div>
+  <div class="mb-3">
+    <label class="form-label">Password</label>
+    <input type="password" [(ngModel)]="myData.password" class="form-control" id="password" placeholder="********">
+  </div>
+  <div mat-dialog-actions>
+    <button mat-button mat-dialog-close>Close</button>
+    <button mat-button mat-dialog-close (click)="login()">Submit</button>
+  </div>
+  </mat-form-field>
+  </mat-toolbar>

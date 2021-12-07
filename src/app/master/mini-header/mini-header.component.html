@@ -1,0 +1,44 @@
+
+<nav class="navbar navbar-expand-sm navbar-dark header" aria-label="Third navbar example">
+    <div class="container-fluid">
+        <a class="navbar-brand" routerLink="/"><img src="assets/images/logo.png" alt="logo" height="60px"></a>
+        <button class="navbar-toggler collapsed" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarsExample03" aria-controls="navbarsExample03" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse" id="navbarsExample03">
+            <div class="pl80 left-head">
+                <ul class="navbar-nav me-auto mb-2 mb-sm-0 ">
+                    <li class="nav-item home">
+                        <a mat-raised-button color="warn" class="nav-link active" aria-current="page" routerLink="/"
+                            routerLinkActive="active">Home</a>
+                    </li>
+                    <li class="nav-item quiz">
+                        <div class="dropdown">
+                            <button mat-raised-button color="warn" class="dropbtn">QUIZ</button>
+                            <div class="dropdown-content">
+                                <a class="nav-link" routerLink="/csquiz">CS QUIZ</a>
+                                <a class="nav-link" routerLink="/itquiz" routerLinkActive="active">IT QUIZ</a>
+                                <a href="#">Link 3</a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="nav-item bncet">
+                        <a class="nav-link" mat-raised-button color="warn" routerLink="/bncet"
+                            routerLinkActive="active">BNCET</a>
+                    </li>
+                    <li class="nav-item about">
+                        <a class="nav-link" mat-raised-button color="warn" routerLink="/about"
+                            routerLinkActive="active">ABOUT US</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="right-head pl50">
+                <button mat-raised-button (click)="login()" type="button">
+                    <mat-icon>menu</mat-icon> LOGIN
+                </button>
+            </div>
+        </div>
+    </div>
+</nav>
