@@ -1,0 +1,247 @@
+
+*{margin: 0;padding: 0;   font-family: sans-serif;}
+
+.p0{padding: 0px;}
+.p10{padding: 10px;}
+.p20{padding: 20px;}
+.p30{padding: 30px;}
+.p40{padding: 40px;}
+.p50{padding: 50px;}
+.p60{padding: 60px;}
+.p70{padding: 70px;}
+.p80{padding: 80px;}
+.p90{padding: 90px;}
+
+.pt10{padding-top: 10px;}
+.pt20{padding-top: 20px;}
+.pt30{padding-top: 30px;}
+.pt40{padding-top: 40px;}
+.pt50{padding-top: 50px;}
+.pt60{padding-top: 60px;}
+
+.pl10{padding-left: 10px;}
+.pl20{padding-left: 20px;}
+.pl30{padding-left: 30px;}
+.pl40{padding-left: 40px;}
+.pl50{padding-left: 50px;}
+.pl60{padding-left: 60px;}
+.pl70{padding-left: 70px;}
+.pl80{padding-left: 630px;}
+
+
+.m0{margin: 0px;}
+.m10{margin: 10px;}
+.m20{margin: 20px;}
+.m30{margin: 30px;}
+.m40{margin: 40px;}
+.m50{margin: 50px;}
+.m60{margin: 60px;}
+.m70{margin: 70px;}
+.m80{margin: 80px;}
+.m90{margin: 90px;}
+
+.mt10{margin-top: 10px;}
+.mt20{margin-top: 20px;}
+.mt30{margin-top: 30px;}
+.mt40{margin-top: 40px;}
+.mt50{margin-top: 50px;}
+.mt60{margin-top: 60px;}
+
+.ml10{margin-left: 10px;}
+.ml20{margin-left: 20px;}
+.ml30{margin-left: 30px;}
+.ml40{margin-left: 40px;}
+.ml50{margin-left: 50px;}
+.ml60{margin-left: 60px;}
+.ml70{margin-left: 70px;}
+.ml80{margin-left: 80px;}
+
+/* navbar */
+
+.bg-header{background-color: slategrey; }
+.left-head{width:90%; height: 65px; float: right; color: #fff;  }
+.right-head{width: 10%; height: 65px; float: right;  padding: 15px;}
+
+
+.home{padding: 10px ; color: #fff; float: left;}
+
+/* header */
+
+.container{width: 100%; min-height: 600px;}
+.leftside{float: left; width: 15%; min-height: 600px; background-color: steelblue;}
+.main{float: left; width: 70%;min-height: 600px; background-color: violet;}
+.rightside{float: left; width: 15%; min-height: 600px; background-color: tomato;}
+
+
+/* MINIGANS */
+
+.carousel-caption h2{color: #fff;}
+.carousel-caption p{color: #fff; font-size: 40px;}
+
+/* MINIGANS */
+
+/* Quizes */
+
+.pagination{margin-bottom: 0px;}
+
+/* Quizes */
+
+/* CsQuiz */
+.questions{margin: 10px; padding: 10px 10px 10px 50px; background-color: rgb(219, 219, 219);}
+
+/* CsQuiz */
+
+/* Footer */
+
+.footer{margin-bottom: 0px; bottom: 0px; width: 100%; height: 60px; background-color: slategrey; text-align: center; color: #fff;}
+/* Footer */
+
+/* addquestion */
+.qnsform{min-height: 300px; margin: 5px;}
+/* addquestion */
+
+/* owlcarousel */
+
+.recruiters{width: 100%; min-height: 100px; background-color: darkblue;}
+
+.owlcarousel{width:100%; background-color: #fff; padding: 10px 20px 10px 20px;}
+.owlcarousel .owl{width: 200px; height: 100px;}
+.owlcarousel .owl img{width: 200px; height: 100px;}
+
+/* owlcarousel */
+.mat-form-field{
+width: 220%;}
+
+/* .err{
+    color: red;
+}
+.ng-touched .ng-invalid{
+    border: 2px solid red;
+}
+.ng-touched .ng-valid{
+    border: 2px solid green;
+    color: green;
+} */
+/* bncet vm */
+.container-fluid{
+    background-color: slategrey;
+}
+.containers{
+    width: 80%;
+    min-height: 350px;
+    border: 10px solid rgb(49, 49, 124);
+    margin-left: 150px;
+    background-color: #fff;
+}
+.bn{
+    padding: 0px 5px;
+    margin: -1px;
+    width: 100.5%;
+    border: 5px solid rgb(49, 49, 124);
+    min-height: 60px;
+    color: rgb(49, 49, 124);
+    text-align: center;
+    font-size: large;
+}
+.vision{
+    padding: 0 5px;
+    margin: -1px;
+    width: 100.5%;
+    border: 5px solid rgb(49, 49, 124);
+    min-height: 130px;
+}
+.mission{
+    padding:0 5px;
+    margin: -1px;
+    width: 100.5%;
+    border: 5px solid rgb(49, 49, 124);
+    min-height: 175px;
+}
+.strong{
+    padding: 0;
+    margin: 0;
+    color: red;
+    text-align: center;
+}
+.vision ul li{
+    color: rgb(49, 49, 124);
+    font-size: 25px;
+}
+.mission ul li{
+    color: rgb(49, 49, 124);
+    font-size: 25px;
+}
+.strong h3{
+    position: absolute;
+    left: 500px;
+}
+/* bncet vm */
+
+.marks{
+    float: right;
+    margin-right: 2%;
+}
+.correct{
+    float: right;
+    margin: 2%;
+    min-height: 10px;
+}
+@media(max-width:600px){
+    .navbar-collapse{
+        min-height: 300px;
+    }
+    .left-head{
+        padding: 0;
+        margin: 0;
+        float: left;
+    }
+    .login{
+        position: absolute;
+        top: -285px;
+        left: 200px;
+    }
+    .nav-link{
+        padding: 5px;
+    }
+    .left-head ul{
+        width: 100%;
+    }
+    .ca-img{
+        height: 300px;
+    }
+    .owlcarousel{
+        width: 100%;
+        margin-left: 0px;
+    }
+    .owlcarousel .owl{
+        width: 100%;
+    }
+    .home .mat-raised-button{width: 150px;}
+    .containers{
+        width: 100%;
+        min-height: 400px;
+        border: 10px solid rgb(49, 49, 124);
+        margin-left: 0px;
+        background-color: #fff;
+    }
+    .vision ul li{
+        color: rgb(49, 49, 124);
+        font-size: 15px;
+    }
+    .mission ul li{
+        color: rgb(49, 49, 124);
+        font-size: 15px;
+    }
+    .bn{
+        padding: 0;
+        width: 101%;
+        font-size: 12px !important;
+    }
+    .vision{
+        width: 101%;
+        min-height: 100px;
+    }
+    .mission{
+        width: 101%;
+    }
+}

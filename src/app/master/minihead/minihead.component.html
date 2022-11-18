@@ -1,0 +1,306 @@
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-header">
+    <a class="navbar-brand" routerLink="/"><img src="assets/images/logo.png" alt="logo" height="60px"></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+        <div class="pl80 left-head">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item home">
+                    <a mat-raised-button color="warn" class="nav-link active" aria-current="page" routerLink="/"
+                        routerLinkActive="active">
+                        <mat-icon>home</mat-icon> Home
+                    </a>
+                </li>
+                <li class="nav-item home">
+                    <button mat-raised-button color="warn" [matMenuTriggerFor]="quiz">
+                        <mat-icon>question_answer</mat-icon> QUIZ
+                    </button>
+                    <mat-menu #quiz="matMenu">
+                        <!--*ngIf="data!=null"-->
+                        <button mat-menu-item><a *ngIf="data!=null" class="nav-link " routerLink="/csquiz"><button mat-raised-button
+                                    color="warn">CS
+                                    QUIZ</button></a></button>
+                        <button hidden mat-menu-item><a *ngIf="data!=null" class="nav-link " routerLink="/itquiz"
+                                routerLinkActive="active"><button mat-raised-button color="warn">IT
+                                    QUIZ</button></a></button>
+                    </mat-menu>
+                </li>
+                <li class="nav-item home">
+                    <a class="nav-link" mat-raised-button color="warn" routerLink="/bncet" routerLinkActive="active">
+                        <mat-icon>school</mat-icon> BNCET
+                    </a>
+                </li>
+                <li class="nav-item home">
+                    <a class="nav-link" mat-raised-button color="warn" routerLink="/about" routerLinkActive="active">
+                        <mat-icon>folder_shared</mat-icon> ABOUT US
+                    </a>
+                </li>
+                <li class="nav-item home">
+                    <button mat-raised-button color="warn" [matMenuTriggerFor]="feature">
+                        <mat-icon>upcoming</mat-icon> GANS Feature
+                    </button>
+                    <mat-menu #feature="matMenu">
+                        <button mat-menu-item><a class="nav-link "><button mat-raised-button
+                                    color="warn">Comming soon!</button></a></button>
+                        <button mat-menu-item><a class="nav-link "
+                                routerLinkActive="active"><button mat-raised-button color="warn">Comming soon!</button></a></button>
+                    </mat-menu>                   
+                </li>
+                <li class="nav-item home">
+                    <!-- Button trigger modal -->
+                    <button class="login" *ngIf="data==null" mat-raised-button type="button" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                        <mat-icon>perm_identity</mat-icon> LOGIN
+                    </button> 
+                    <button class="login" *ngIf="data!=null" mat-raised-button [matMenuTriggerFor]="profile">
+                        <mat-icon>person</mat-icon>
+                    </button>
+                     <mat-menu  #profile="matMenu" xPosition="before">
+                        <div mat-menu-item>
+                            <h2 *ngIf="data!=null">Hello <span>{{userprofile[0].userid}} </span></h2>
+                        </div>
+                        <div mat-menu-item>
+                            <h2 Class="usrname">{{ message(dateTime|date:'HH')}}</h2>
+                        </div>
+                        <div mat-menu-item>
+                            <h3 *ngIf="data!=null">Email: <span>{{userprofile[0].email}}</span></h3>
+                        </div>
+                        <div mat-menu-item>
+                            <h3 *ngIf="data!=null">Attempt Quiz: <span>0</span></h3>
+                        </div>
+                        <button mat-menu-item>
+                            <button *ngIf="data!=null" (click)="logout()" mat-raised-button color="accent">
+                                <mat-icon>logout</mat-icon> Logout
+                            </button>
+                        </button>
+                    </mat-menu>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<!-- <pre>{{userprofile|json}}</pre> -->
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+            <div class="modal-header">
+                <mat-card-title *ngIf="!sign && !forget"> Login </mat-card-title>
+                <mat-card-title *ngIf="sign && !forget"> Sign Up </mat-card-title>
+                <mat-card-title *ngIf="!sign && forget"> Forget Password </mat-card-title>
+                <!-- <h2 *ngIf="!sign && !forget" class="modal-title" id="exampleModalLabel">Login</h2>
+                <h2 *ngIf="sign && !forget" class="modal-title" id="exampleModalLabel">Sign Up</h2>
+                <h2 *ngIf="forget && !sign" class="modal-title" id="exampleModalLabel">Forget Password</h2> -->
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <mat-card>
+                    <!-- show error msg -->
+                    <div *ngIf="errMsg" class="alert alert-danger alert-dismissible fade show" role="alert">
+                        <strong>Warning!</strong> {{errMsg}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <!-- close error msg -->
+                    <!-- show succes msg -->
+                    <div *ngIf="succesMsg" class="alert alert-success alert-dismissible fade show" role="alert">
+                        <strong>Success!</strong> {{succesMsg}}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+                    </div>
+                    <!-- close succes msg -->
+                        <mat-card-content> 
+                            <!-- Login Form -->
+                          <form *ngIf="!sign && !forget" [formGroup]="loginForm" (ngSubmit)="login()" class="example-form">
+                              <table class="example-full-width" cellspacing="0">
+                                <tr>
+                                  <td>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                      <mat-label>E mail</mat-label>
+                                      <input matInput [type]=" 'email'" formControlName="email" [pattern]="emailPattern"/>
+                                    </mat-form-field>
+                                  </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                      <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Password</mat-label>
+                                        <input matInput [type]=" 'password'" formControlName="password"/>
+                                      </mat-form-field>
+                                    </td>
+                                  </tr>
+                              </table>
+                            </form>
+                            <!-- Login Form -->
+                
+                            <!-- New User Form -->
+                          <form *ngIf="sign && !forget" [formGroup]="userForm" (ngSubmit)="signup()" class="example-form">
+                            <table class="example-full-width" cellspacing="0">
+                              <tr>
+                                <td>
+                                  <mat-form-field class="example-full-width" appearance="fill">
+                                    <mat-label>User Name</mat-label>
+                                    <input matInput [type]=" 'text'" formControlName="userid"/>
+                                  </mat-form-field>
+                                </td>
+                              </tr>
+                              <tr>
+                                <td>
+                                  <mat-form-field class="example-full-width" appearance="fill">
+                                    <mat-label>E mail</mat-label>
+                                    <input matInput [type]=" 'email'" formControlName="email"/>
+                                  </mat-form-field>
+                                </td>
+                              </tr>
+                              <tr>
+                                  <td>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                      <mat-label>Password</mat-label>
+                                      <input matInput [type]=" 'password'" formControlName="password"/>
+                                    </mat-form-field>
+                                  </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                      <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Password</mat-label>
+                                        <input matInput [type]=" 'password'" formControlName="cpassword"/>
+                                      </mat-form-field>
+                                    </td>
+                                  </tr>
+                            </table>
+                          </form>
+                          <!-- New User Form -->
+                
+                          <!-- Forget Password Form -->
+                          <form *ngIf="!sign && forget" [formGroup]="loginForm" (ngSubmit)="login()" class="example-form">
+                            <table class="example-full-width" cellspacing="0">
+                              <tr>
+                                <td>
+                                  <mat-form-field class="example-full-width" appearance="fill">
+                                    <mat-label>E mail</mat-label>
+                                    <input matInput [type]=" 'email'" formControlName="email"/>
+                                  </mat-form-field>
+                                </td>
+                              </tr>
+                              <tr>
+                                  <td>
+                                    <mat-form-field class="example-full-width" appearance="fill">
+                                      <mat-label>New Password</mat-label>
+                                      <input matInput [type]=" 'password'" formControlName="password"/>
+                                    </mat-form-field>
+                                  </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                      <mat-form-field class="example-full-width" appearance="fill">
+                                        <mat-label>Confirm Password</mat-label>
+                                        <input matInput [type]=" 'password'" formControlName="password"/>
+                                      </mat-form-field>
+                                    </td>
+                                  </tr>
+                            </table>
+                          </form>
+                          <!-- Forget Password Form -->
+                        </mat-card-content>
+                
+                        <!-- <mat-card-footer> 
+                            <div class="btn-lgn">
+                                <button *ngIf="!sign && !forget" class="login" mat-raised-button color="primary" [disabled]="!loginForm.valid" (click)="login()">Login</button>
+                                <button *ngIf="!sign && !forget" class="newusr" mat-raised-button color="accent" (click)="newuser()">New User</button>
+                                <button *ngIf="!sign && !forget" class="newusr" mat-raised-button color="" (click)="forgetpass()">Forget Password</button>
+                
+                                <button *ngIf="sign || forget" class="login" type="button" mat-raised-button color="secondary" (click)="clear()">Login</button>
+                                <button *ngIf="!sign && forget" class="newusr" type="button" mat-raised-button color="primary">Change Password</button>
+                                <button *ngIf="sign" class="newusr" mat-raised-button color="primary" (keyup.enter)="signup()"
+                                    (click)="signup()">Sign Up</button>
+                            </div>
+                        </mat-card-footer> -->
+
+<!-- Login Form --><!-- New User Form -->
+                    <!-- <form *ngIf="!sign && !forget" [formGroup]="loginForm" (ngSubmit)="login()">
+                        <div class="form-group">
+                            <label>Email address <span class="err">*</span></label>
+                            <input type="email" class="form-control" formControlName="email" placeholder="Enter email">
+                        </div>
+                        <div  class="form-group">
+                            <label>Password <span class="err">*</span></label>
+                            <input (keyup.enter)="login()" type="password" class="form-control" formControlName="password"
+                                placeholder="Password">
+                            {{loginForm.value.password}}
+                        </div>                        
+                    </form> -->
+<!-- New User Form -->
+<!-- Forget Password Form -->
+                    <!-- <form *ngIf="forget && !sign" [formGroup]="loginForm" (ngSubmit)="forgetpass()">
+                        <div class="form-group">
+                            <label>Email address <span class="err">*</span></label>
+                            <input type="email" class="form-control" formControlName="email" placeholder="Enter email">
+                        </div>
+                        <div *ngIf="forget && !sign" class="form-group">
+                            <label>New Password <span class="err">*</span></label>
+                            <input type="password" class="form-control" formControlName="password"
+                                placeholder="New Password">
+                        </div>         
+                        <div *ngIf="forget && !sign" class="form-group">
+                            <label>Confirm New Password <span class="err">*</span></label>
+                            <input type="password" class="form-control" formControlName="cpassword"
+                                placeholder="Confirm New Password">
+                        </div>       
+                    </form> -->
+<!-- Forget Password Form -->
+<!-- New User Form -->
+                    <!-- <form *ngIf="sign && !forget" [formGroup]="userForm" (ngSubmit)="signup()">
+                        <div *ngIf="sign || !forget" class="form-group">
+                            <label>User Name <span class="err">*</span></label>
+                            <input type="name" formControlName="userid" class="form-control"
+                                placeholder="Enter User Name">
+                        </div>
+                        <div *ngIf="sign || !forget" class="form-group">
+                            <label>Email address <span class="err">*</span></label>
+                            <input type="email" class="form-control" formControlName="email" placeholder="Enter email">
+                            
+                        </div>
+                        <div *ngIf="sign || !forget" class="form-group">
+                            <label for="password">Password <span class="err">*</span></label>
+                            <input type="password" class="form-control" formControlName="password"
+                                placeholder="Password">
+                        </div>
+                        <div *ngIf="sign || !forget" class="form-group">
+                            <label>Confirm Password <span class="err">*</span></label>
+                            <input type="password" class="form-control" formControlName="cpassword"
+                                placeholder="Confirm Password">
+                        </div>
+                    </form> -->
+<!-- New User Form -->
+                </mat-card>
+            </div>
+            
+             <div class="modal-footer">
+                <mat-card-footer> 
+                <div class="btn-lgn">
+                    <button *ngIf="!sign && !forget" class="loginr " mat-raised-button color="primary" [disabled]="!loginForm.valid" (click)="login()">Login</button>
+                    <button *ngIf="!sign && !forget" class="newusr " mat-raised-button color="accent" (click)="newuser()">New User</button>
+                    <button *ngIf="!sign && !forget" class="newusr " mat-raised-button color="" (click)="forgetpass()">Forget Password</button>
+    
+                    <button *ngIf="sign || forget" class="loginr " type="button" mat-raised-button color="secondary" (click)="clear()">Login</button>
+                    <button *ngIf="!sign && forget" class="newusr " type="button" mat-raised-button color="primary">Change Password</button>
+                    <button *ngIf="sign" class="newusr" mat-raised-button color="primary" (keyup.enter)="signup()"
+                        (click)="signup()">Sign Up</button>
+                </div>
+            </mat-card-footer>
+            <!--
+                <button *ngIf="!sign && !forget" class="ml10" mat-raised-button color="" (click)="forgetpass()">Forget Password</button>
+                <button *ngIf="!sign && forget" type="button" mat-raised-button color="primary">Change Password</button>
+                <button *ngIf="!sign && !forget" class="ml10" mat-raised-button color="accent" (click)="newuser()">New
+                    User</button>
+                <button *ngIf="!sign" type="button" mat-raised-button color="secondary" data-bs-dismiss="modal"
+                    (click)="this.loginForm.reset();">Close</button>
+                <button *ngIf="sign || forget" type="button" mat-raised-button color="secondary" (click)="clear()">Login</button>
+                <button *ngIf="!sign && !forget" class="ml10" mat-raised-button color="primary" (click)="login()">Login</button>
+                <button *ngIf="sign" class="ml10" mat-raised-button color="primary" (keyup.enter)="signup()"
+                    (click)="signup()">Sign Up</button>-->
+            </div> 
+        </div>
+    </div>
+</div>

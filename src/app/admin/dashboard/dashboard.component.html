@@ -1,0 +1,38 @@
+
+<div class="container mt20 ">
+
+    <a class="nav-link" mat-raised-button color="primary" routerLink="/addquestion"
+    routerLinkActive="active"><mat-icon>add_circle_outline</mat-icon> Add Question</a>
+
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Question</th>
+            <th scope="col">Option 1</th>
+            <th scope="col">Option 2</th>
+            <th scope="col">Option 3</th>
+            <th scope="col">Option 4</th>
+            <th scope="col">Correct Answer</th>
+            <th scope="col">Edit</th>
+            <th scope="col">Delete</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let qns of allQuestion; index as i">
+            <th scope="row">{{i+1}}</th>
+            <td>{{qns.question}}</td>
+            <td>{{qns.option1}}</td>
+            <td>{{qns.option2}}</td>
+            <td>{{qns.option3}}</td>
+            <td>{{qns.option4}}</td>
+            <td>{{qns.answer}}</td>
+            <td>
+              <a [routerLink]="['/addquestion',qns.id]" class="btn btn-warning " (click)="updateQuestion()"><mat-icon>mode_edit</mat-icon></a> 
+            </td>
+            <td><button class="btn btn-danger ml20" (click)="deleteId(qns.id)"><mat-icon>delete_outline</mat-icon></button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+</div>

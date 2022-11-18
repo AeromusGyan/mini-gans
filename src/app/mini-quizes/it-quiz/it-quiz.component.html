@@ -1,0 +1,36 @@
+
+<!-- {{allQuestion|json}} -->
+<div class="container">
+  <p>Correct Answer</p>{{correct}}
+  <p>Incorrect Answer</p>{{incorrect}}
+      <div class="questions ">
+          <ul  class="list-group list-group-flush" *ngFor="let question of allQuestion ; index as i">
+            <div *ngIf="question.department=='CS'||'IT'">
+            <p class="text-center">{{i+1}} of {{allQuestion.length}}</p>
+          <li class="list-group-item"><label id="example-radio-group-label"> <b>Q {{i+1}}. {{question.question}} </b><br></label></li>
+          <li class="list-group-item qns">a. <mat-radio-button (change)="userans(i,question.option1)" [name]="'opta'+i" class="example-radio-button"> <div class="opt">{{question.option1}}</div> </mat-radio-button></li>
+          <li class="list-group-item qns">b. <mat-radio-button (change)="userans(i,question.option2)" [name]="'opta'+i" class="example-radio-button"> {{question.option2}} </mat-radio-button></li>
+          <li class="list-group-item qns">c. <mat-radio-button (change)="userans(i,question.option3)" [name]="'opta'+i" class="example-radio-button"> {{question.option3}} </mat-radio-button></li>
+          <li class="list-group-item qns">d. <mat-radio-button (change)="userans(i,question.option4)" [name]="'opta'+i" class="example-radio-button"> {{question.option4}} </mat-radio-button></li>
+          <br>
+         </div>
+            <mat-divider></mat-divider>
+        </ul>
+        <button class="quizbtn" mat-raised-button color="" (click)="QuizSubmit()">Submit</button>
+        <!-- <div class="pagination">
+          | 
+        paginate: {
+          itemsPerPage: 1, 
+          currentPage: page,
+          totalItems:totalLength
+       }
+          <pagination-controls class=" my-pagination" (pageChange)="page = $event"></pagination-controls>
+        </div> -->
+          <!-- <mat-paginator [length]="this.allQuestion.length"
+                          [pageSize]="1"
+                          aria-label="Select page"
+                          (page)="OnPageChange($event)">
+         </mat-paginator> -->
+     
+     </div> 
+</div>

@@ -1,0 +1,37 @@
+
+  .example-radio-group {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0;
+  }
+  .example-radio-button {
+    margin: 10px;
+  }
+  /* .my-pagination /deep/ .ngx-pagination .current {
+    background: red;
+  } */
+  .pagination{
+    text-align: center;
+  }
+  .mat-radio-button{
+    width: 1140px !important;
+  }
+  .qns:hover{
+    background-color: rgb(151, 151, 151);
+  }
+  
+.mat-radio-checked{
+  background-color: green;
+  color: #fff;
+}
+.quizbtn{
+  margin:10px 550px;
+}
+@media(max-width:800px){
+  .mat-radio-button{
+    width: 310px !important;
+  }
+  .quizbtn{
+    margin:10px 100px;
+  }
+}

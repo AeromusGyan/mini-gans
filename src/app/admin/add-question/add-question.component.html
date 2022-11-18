@@ -1,0 +1,117 @@
+
+
+<div class="container mt-3">
+  <div class="row">
+    <div class="col-md-8">
+      <a class="nav-link" mat-raised-button color="primary" routerLink="/dashboard" routerLinkActive="active">
+        <mat-icon>exit_to_app</mat-icon>
+      </a>
+    </div>
+    <div class="col-md-4">
+    <nav aria-label="breadcrumb">
+      <ol class="breadcrumb float-right">
+        <li class="breadcrumb-item"><a href="#">Home</a></li>
+        <li class="breadcrumb-item"><a href="#">Library</a></li>
+        <li class="breadcrumb-item active" aria-current="page">Data</li>
+      </ol>
+    </nav>
+  </div>
+  <div class="col-md-12">
+    <!-- show error msg -->
+    <div *ngIf="errMsg" class="alert alert-danger alert-dismissible fade show" role="alert">
+      <strong>Warning!</strong> {{errMsg}}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <!-- close error msg -->
+
+    <!-- show succes msg -->
+    <div *ngIf="succesMsg" class="alert alert-success alert-dismissible fade show" role="alert">
+      <strong>Success!</strong> {{succesMsg}}
+      <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+    </div>
+    <!-- close succes msg -->
+        <!-- show succes msg -->
+        <div *ngIf="updateMsg" class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>Succes!</strong> {{updateMsg}}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <!-- close succes msg -->
+
+        <!-- show succes msg -->
+        <div *ngIf="deleteMsg" class="alert alert-success alert-dismissible fade show" role="alert">
+          <strong>Delete!</strong> {{deleteMsg}}
+          <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <!-- close succes msg -->
+  </div>
+  </div>
+
+  <div class="container qnsform">
+    <form [formGroup]="questionForm">
+      <div class="row">
+      <div class="col col-md-2">
+        <label for="department" class="form-label"><strong>Department <span class="err">*</span></strong></label>
+        <input type="text" class="form-control" formControlName="department" aria-describedby="department">
+      </div>
+      <div class="col col-md-10">
+        <label for="question" class="form-label"><strong>Question <span class="err">*</span></strong></label>
+        <input type="question" class="form-control" formControlName="question" aria-describedby="question">
+      </div>
+      <div class="col col-md-6">
+        <label for="option1" class="form-label"><strong>Option 1 <span class="err">*</span></strong></label>
+        <input type="text" class="form-control" formControlName="option1" aria-describedby="1">
+      </div>
+      <div class="col col-md-6">
+        <label for="option2" class="form-label"><strong>Option 2 <span class="err">*</span></strong></label>
+        <input type="text" class="form-control" formControlName="option2" aria-describedby="option2">
+      </div>
+      <div class="col col-md-6">
+        <label for="option3" class="form-label"><strong>Option 3 <span class="err">*</span></strong></label>
+        <input type="text" class="form-control" formControlName="option3" aria-describedby="option3">
+      </div>
+      <div class="col col-md-6">
+        <label for="option4" class="form-label"><strong>Option 4 <span class="err">*</span></strong></label>
+        <input type="text" class="form-control" formControlName="option4" aria-describedby="option4">
+      </div>
+      <div class="col col-md-6">
+        <label for="answer" class="form-label"><strong>Correct Answer <span class="err">*</span></strong></label>
+        <input type="text" class="form-control" formControlName="answer" aria-describedby="answer">
+      </div>
+    <div class="col col-md-6 mt-4">
+      <button mat-raised-button color="primary" (click)="questionSubmit()" *ngIf="!getparamid">Submit</button>
+      
+      <button mat-raised-button color="primary" (click)="updateQuestion()" *ngIf="getparamid">Update</button>
+    </div>
+  </div>
+    </form>
+  </div>
+
+  <table class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Question</th>
+        <th scope="col">Option 1</th>
+        <th scope="col">Option 2</th>
+        <th scope="col">Option 3</th>
+        <th scope="col">Option 4</th>
+        <th scope="col">Correct Answer</th>
+        <th scope="col">Edit</th>
+        <th scope="col">Delete</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let qns of allQuestion; index as i">
+        <th scope="row">{{i+1}}</th>
+        <td>{{qns.question}}</td>
+        <td>{{qns.option1}}</td>
+        <td>{{qns.option2}}</td>
+        <td>{{qns.option3}}</td>
+        <td>{{qns.option4}}</td>
+        <td>{{qns.answer}}</td>
+        <td> <button class="btn btn-warning" (click)="updateQuestion()"> <mat-icon>mode_edit</mat-icon> </button> </td>
+        <td> <button mat-fab color="warn" aria-label="Example icon button with a delete icon" (click)="deleteId(qns.id)"> <mat-icon>delete_outline</mat-icon> </button> </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

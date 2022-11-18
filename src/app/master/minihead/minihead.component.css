@@ -1,0 +1,53 @@
+.dropbtn {
+    font-size: 16px;
+    border: none;
+  }
+  .dropdown {
+    position: relative;
+    display: inline-block;
+    padding: 0px;
+  }
+  .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #f1f1f1;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+  }
+  
+  .dropdown-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+  }
+  
+  .dropdown-content a:hover {background-color: #ddd;}
+  
+  .dropdown:hover .dropdown-content {display: block;}
+  
+  .dropdown:hover .dropbtn {background-color: #f82616;}
+
+
+
+  .usrname{
+      height: 50px !important;
+  }
+  .modal-footer .mat-raised-button{
+    margin-left: 10px;
+  }
+  
+  .btn-lgn{
+    margin:10px 0px 20px 0px;
+  }
+  .loginr{
+    margin-left: 30%;
+  }
+  .newusr{
+    margin-left: 10px;
+  }
+  .mat-card-footer {
+    display: block;
+    margin: 0 6px -16px -16px;
+}

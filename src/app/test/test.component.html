@@ -1,0 +1,41 @@
+
+ <form  [formGroup]="userForm" class="example-form">
+    <table class="example-full-width" cellspacing="0">
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>User Name</mat-label>
+            <input matInput [type]=" 'text'" formControlName="userid"/>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+        <td>
+          <mat-form-field class="example-full-width" appearance="fill">
+            <mat-label>E mail</mat-label>
+            <input matInput [type]=" 'email'" formControlName="email"/>
+          </mat-form-field>
+        </td>
+      </tr>
+      <tr>
+          <td>
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Password</mat-label>
+              <input matInput [type]=" 'password'" formControlName="password"/>
+            </mat-form-field>
+          </td>
+        </tr>
+        <tr>
+            <td>
+              <mat-form-field class="example-full-width" appearance="fill">
+                <mat-label>Password</mat-label>
+                <input matInput [type]=" 'password'" formControlName="cpassword"/>
+              </mat-form-field>
+            </td>
+          </tr>
+    </table>
+
+    <button class="newusr" mat-raised-button color="primary" (click)="signup()">Sign Up</button>
+  </form>
+
+  {{userForm.value}}
